@@ -1,0 +1,361 @@
+/* ===== ЦВЕТОВАЯ ПАЛИТРА (как в старой версии) ===== */
+:root {
+    /* Фон и нейтральные */
+    --bg-main: #F5F6FA;
+    --bg-white: #FFFFFF;
+    --bg-light-gray: #F0F0F0;
+    --bg-input: #D9D9D9;
+    --bg-info: #f8f9fa;
+    
+    /* Главный темно-синий */
+    --primary-dark: #0b1f35;
+    --primary-hover: #142a47;
+    --primary-medium: #1a3453;
+    --primary-light: #234566;
+    
+    /* Красный акцент */
+    --accent-red: #ef3124;
+    --accent-red-hover: #d42a1e;
+    
+    /* Текст */
+    --text-black: #000000;
+    --text-dark: #333333;
+    --text-medium: #555555;
+    --text-gray: #666666;
+    --text-label: #6B6B6B;
+    --text-light: #999999;
+    --border-light: #e0e0e0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-main);
+    color: var(--text-black);
+}
+
+.app-container {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+
+/* ===== ПЕРЕОПРЕДЕЛЕНИЕ BOOTSTRAP ===== */
+.navbar {
+    background-color: var(--primary-dark) !important;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: rgba(255,255,255,0.8) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+}
+
+.btn-danger, .btn-outline-danger {
+    background-color: var(--accent-red) !important;
+    border-color: var(--accent-red) !important;
+    color: white !important;
+}
+
+.btn-danger:hover, .btn-outline-danger:hover {
+    background-color: var(--accent-red-hover) !important;
+    border-color: var(--accent-red-hover) !important;
+}
+
+.btn-outline-secondary {
+    color: var(--text-gray) !important;
+    border-color: var(--border-light) !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--bg-light-gray) !important;
+    color: var(--text-dark) !important;
+}
+
+/* ===== КАРТОЧКИ УСЛУГ ===== */
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.service-card-wrapper {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 280px;
+    max-width: calc(33.333% - 14px);
+}
+
+/* По умолчанию card НЕ должен "прыгать" на страницах типа корзины/заявки.
+   Эффект hover оставляем только на карточках услуг в сетке. */
+.card {
+    margin-bottom: 0;
+    height: 100%;
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+}
+
+.services-grid .card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.services-grid .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(11, 31, 53, 0.15);
+}
+
+.card-title {
+    color: var(--text-black);
+    font-weight: 600;
+}
+
+.card-text {
+    color: var(--text-medium);
+}
+
+.card-img-top {
+    background-color: var(--bg-light-gray);
+}
+
+/* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+.breadcrumbs {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.breadcrumbs * {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.breadcrumbs *:not(.slash):hover {
+    color: var(--primary-dark);
+}
+
+.breadcrumbs li:last-child {
+    color: var(--text-black);
+    font-weight: bold;
+}
+
+/* ===== ФИЛЬТР ===== */
+.filter-form {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.filter-form .form-control {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-light);
+    color: var(--text-black);
+}
+
+.filter-form .form-control:focus {
+    border-color: var(--primary-medium);
+    box-shadow: 0 0 0 2px rgba(11, 31, 53, 0.1);
+}
+
+.filter-form .form-label {
+    color: var(--text-label);
+    font-size: 0.85rem;
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.filter-field {
+    flex: 1 1 200px;
+    min-width: 150px;
+}
+
+.filter-button {
+    flex: 0 0 auto;
+    min-width: 150px;
+}
+
+/* ===== КАРУСЕЛЬ НА ГЛАВНОЙ ===== */
+.home-carousel {
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.carousel-slide {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    border-radius: 8px;
+    background-color: var(--primary-dark);
+}
+
+/* ===== СТРАНИЦА ДЕТАЛЬНОЙ ИНФОРМАЦИИ ===== */
+.service-detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.service-detail-image {
+    flex: 1 1 300px;
+    min-width: 280px;
+}
+
+.service-detail-image img {
+    border-radius: 8px;
+    background-color: var(--bg-light-gray);
+}
+
+.service-detail-info {
+    flex: 1 1 300px;
+    min-width: 280px;
+}
+
+.service-detail-info h2 {
+    color: var(--text-black);
+    margin-bottom: 15px;
+}
+
+.service-detail-info .lead {
+    color: var(--text-medium);
+}
+
+.service-detail-info p {
+    color: var(--text-dark);
+}
+
+.service-detail-info strong {
+    color: var(--text-black);
+}
+
+/* ===== ЗАГОЛОВКИ ===== */
+h1, h2, h3 {
+    color: var(--text-black);
+}
+
+.container h1 {
+    margin-bottom: 20px;
+}
+
+/* ===== МЕДИА-ЗАПРОСЫ ДЛЯ АДАПТИВНОСТИ ===== */
+
+/* Планшеты (768px - 1024px): 2 карточки в ряд */
+@media (max-width: 1024px) {
+    .service-card-wrapper {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 10px);
+    }
+    
+    .home-carousel {
+        max-width: 100%;
+    }
+    
+    .carousel-slide {
+        height: 300px;
+        font-size: 20px;
+    }
+}
+
+/* Мобильные устройства (до 768px): 1 карточка в ряд */
+@media (max-width: 768px) {
+    .service-card-wrapper {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    
+    .filter-row {
+        flex-direction: column;
+    }
+    
+    .filter-field,
+    .filter-button {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+    
+    .carousel-slide {
+        height: 250px;
+        font-size: 18px;
+    }
+    
+    .service-detail-container {
+        flex-direction: column;
+    }
+    
+    .service-detail-image,
+    .service-detail-info {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Маленькие мобильные (до 480px) */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 0 10px;
+    }
+    
+    .carousel-slide {
+        height: 200px;
+        font-size: 16px;
+    }
+    
+    .filter-form {
+        padding: 10px;
+    }
+    
+    .breadcrumbs {
+        font-size: 14px;
+        gap: 5px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .card-body {
+        padding: 12px;
+    }
+}
+
