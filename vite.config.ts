@@ -18,10 +18,12 @@ export default defineConfig(({ mode }) => {
   const basePath = target_tauri ? "./" : (mode === "development" ? "/" : "/credit-scoring-system-")
   
   // HTTPS сертификаты (сгенерированы через mkcert)
-  const httpsConfig = (!isDocker && !target_tauri && fs.existsSync('./cert.pem')) ? {
-    key: fs.readFileSync('./key.pem'),
-    cert: fs.readFileSync('./cert.pem'),
-  } : false
+  // Временно отключено для Tauri + Wireshark
+  const httpsConfig = false
+  // const httpsConfig = (!isDocker && !target_tauri && fs.existsSync('./cert.pem')) ? {
+  //   key: fs.readFileSync('./key.pem'),
+  //   cert: fs.readFileSync('./cert.pem'),
+  // } : false
   
   return {
     plugins: [
